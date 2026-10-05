@@ -742,6 +742,27 @@
   .dot-live{width:8px;height:8px;border-radius:50%;background:#2e9e6a;box-shadow:0 0 0 0 rgba(46,158,106,.6);animation:pulse 2s infinite;flex-shrink:0}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(46,158,106,.55)}70%{box-shadow:0 0 0 9px rgba(46,158,106,0)}100%{box-shadow:0 0 0 0 rgba(46,158,106,0)}}
   .open-dark{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3);color:#fff;margin:22px 0 0}
+
+  /* case study v2 */
+  .g-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:18px}
+  .g-kpis div{background:#fff;padding:18px 20px}
+  .g-kpis b{display:block;font-family:var(--serif);font-weight:400;font-size:1.9rem;color:var(--deep);line-height:1}
+  .g-kpis span{font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+  @media(max-width:760px){.g-kpis{grid-template-columns:1fr 1fr}}
+  .g-row{min-height:64px}
+  .g-bar.base{top:34%;height:10px;margin-top:-5px;background:transparent;border:1px dashed var(--sea)}
+  .g-bar.act{top:64%;height:12px;margin-top:-6px}
+  .g-bar.act.complete{background:var(--deep)}
+  .g-bar.act.ongoing{background:var(--teal)}
+  .g-bar.base.milestone-end::after{top:0;width:9px;height:9px}
+  .ch-list.sm li{display:flex;justify-content:space-between;gap:10px;padding-left:24px}
+  .ch-list.sm li::before{width:auto;height:auto;background:none;top:.25em;font-size:.8rem}
+  .ch-list.sm li.ok::before{content:"✓";color:var(--teal);font-weight:700}
+  .ch-list.sm li.wip::before{content:"●";color:#b0632a;font-size:.6rem;top:.5em}
+  .ch-list.sm em{font-style:normal;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .ch-list.sm li.ok em{color:var(--teal)}
+  .issue-table .r-row{grid-template-columns:2.4fr .8fr 2.4fr .8fr}
+  @media(max-width:900px){.issue-table .r-row{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -1324,8 +1345,9 @@
       <button class="cs-tab" role="tab" data-t="timeline">02 · Timeline</button>
       <button class="cs-tab" role="tab" data-t="stakeholders">03 · Stakeholders</button>
       <button class="cs-tab" role="tab" data-t="risks">04 · Risks</button>
-      <button class="cs-tab" role="tab" data-t="changes">05 · Change Log</button>
-      <button class="cs-tab" role="tab" data-t="lessons">06 · Lessons</button>
+      <button class="cs-tab" role="tab" data-t="issues">05 · Issues</button>
+      <button class="cs-tab" role="tab" data-t="changes">06 · Change Log</button>
+      <button class="cs-tab" role="tab" data-t="lessons">07 · Lessons</button>
     </div>
 
     <!-- CHARTER -->
@@ -1336,22 +1358,23 @@
         <div class="ch-cell"><span class="label">Duration</span><p><b>Start:</b> 16 September 2026<br><b>Due:</b> 30 November 2026<br><b>Budget:</b> €22 (Claude subscription)<br><b>Hosting:</b> free on GitHub Pages</p></div>
         <div class="ch-cell"><span class="label">In Scope</span><ul class="ch-list"><li>Single-page responsive website</li><li>Projects, research, experience, values and vision</li><li>Downloadable CV and dissertation</li><li>Interactive features: values compass, assistant, quiz</li><li>Voice-note introduction</li></ul></div>
         <div class="ch-cell"><span class="label">Out of Scope</span><ul class="ch-list"><li>Paid website builders or a custom domain (kept costs low)</li><li>A live AI chatbot (needs a paid service)</li><li>Full reference letters (privacy)</li><li>Blog or regularly updated content</li></ul></div>
-        <div class="ch-cell"><span class="label">Success Measures</span><ul class="ch-list"><li>Site live on GitHub Pages before feedback phase</li><li>Works on phone and desktop</li><li>Feedback gathered from at least 3 people</li><li>Linked from my LinkedIn profile and CV</li><li>Submitted by 30 November 2026</li></ul></div>
+        <div class="ch-cell" style="grid-column:span 2"><span class="label">Success Measures · Status</span><ul class="ch-list sm"><li class="ok">Site live on GitHub Pages before feedback phase <em>Live 30 Sept</em></li><li class="ok">Works on phone and desktop <em>Tested</em></li><li class="wip">Feedback gathered from at least 3 people <em>In progress</em></li><li class="wip">Linked from my LinkedIn profile and CV <em>In progress</em></li><li class="wip">Submitted by 30 November 2026 <em>On track</em></li></ul></div>
       </div>
     </div>
 
     <!-- TIMELINE -->
     <div class="cs-panel" id="cs-timeline" role="tabpanel">
+      <div class="g-kpis"><div><b>30 Sept</b><span>Actual launch</span></div><div><b>12 days</b><span>Ahead of planned launch (12 Oct)</span></div><div><b>6 days</b><span>Design &amp; Build finished early</span></div><div><b>€22</b><span>Spent of €22 budget</span></div></div>
       <div class="gantt" id="gantt" data-start="2026-09-16" data-end="2026-11-30">
         <div class="g-head" id="gHead"></div>
-        <div class="g-row" data-s="2026-09-16" data-e="2026-09-22"><div class="g-name"><b>Initiation</b><span>Brief, values exercise, goals</span></div><div class="g-track"><div class="g-bar"></div></div></div>
-        <div class="g-row" data-s="2026-09-21" data-e="2026-09-29"><div class="g-name"><b>Planning</b><span>Content, platform choice, structure</span></div><div class="g-track"><div class="g-bar"></div></div></div>
-        <div class="g-row" data-s="2026-09-29" data-e="2026-10-11"><div class="g-name"><b>Design &amp; Build</b><span>Palettes, layout, photos, research</span></div><div class="g-track"><div class="g-bar"></div></div></div>
-        <div class="g-row" data-s="2026-10-12" data-e="2026-10-18"><div class="g-name"><b>Launch &amp; Test</b><span>Publish, test on devices, voice note</span></div><div class="g-track"><div class="g-bar"></div></div></div>
-        <div class="g-row" data-s="2026-10-19" data-e="2026-11-08"><div class="g-name"><b>Feedback &amp; Iterate</b><span>Peer and mentor feedback, changes</span></div><div class="g-track"><div class="g-bar"></div></div></div>
+        <div class="g-row" data-s="2026-09-16" data-e="2026-09-22" data-as="2026-09-16" data-ae="2026-09-22"><div class="g-name"><b>Initiation</b><span>Brief, values exercise, goals</span></div><div class="g-track"><div class="g-bar"></div></div></div>
+        <div class="g-row" data-s="2026-09-21" data-e="2026-09-29" data-as="2026-09-21" data-ae="2026-09-29"><div class="g-name"><b>Planning</b><span>Content, platform choice, structure</span></div><div class="g-track"><div class="g-bar"></div></div></div>
+        <div class="g-row" data-s="2026-09-29" data-e="2026-10-11" data-as="2026-09-29" data-ae="2026-10-05"><div class="g-name"><b>Design &amp; Build</b><span>Palettes, layout, photos, research</span></div><div class="g-track"><div class="g-bar"></div></div></div>
+        <div class="g-row" data-s="2026-10-12" data-e="2026-10-18" data-as="2026-09-30" data-ae="2026-10-05"><div class="g-name"><b>Launch &amp; Test</b><span>Publish, test on devices, voice note</span></div><div class="g-track"><div class="g-bar"></div></div></div>
+        <div class="g-row" data-s="2026-10-19" data-e="2026-11-08" data-as="2026-10-05" data-ae="today"><div class="g-name"><b>Feedback &amp; Iterate</b><span>Peer and mentor feedback, changes</span></div><div class="g-track"><div class="g-bar"></div></div></div>
         <div class="g-row" data-s="2026-11-02" data-e="2026-11-22"><div class="g-name"><b>Promote &amp; Monitor</b><span>LinkedIn, CV link, visitor stats</span></div><div class="g-track"><div class="g-bar"></div></div></div>
         <div class="g-row" data-s="2026-11-16" data-e="2026-11-30"><div class="g-name"><b>Close</b><span>Report, lessons learned, submission</span></div><div class="g-track"><div class="g-bar milestone-end"></div></div></div>
-        <div class="g-legend"><span><i class="done"></i>Complete</span><span><i class="prog"></i>In progress</span><span><i class="plan"></i>Planned</span><span><i class="today"></i>Today</span></div>
+        <div class="g-legend"><span><i class="plan"></i>Planned (baseline)</span><span><i class="done"></i>Actual · complete</span><span><i class="prog"></i>Actual · in progress</span><span><i class="today"></i>Today</span></div>
       </div>
     </div>
 
@@ -1384,7 +1407,20 @@
         <div class="r-row" role="row"><span><b>Copyright</b>Using images found on Google</span><span class="lv m">Medium</span><span class="lv h">High</span><span>Used only my own photos</span><span class="st closed">Closed</span></div>
         <div class="r-row" role="row"><span><b>Scope creep</b>Repeated design changes delaying delivery</span><span class="lv h">High</span><span class="lv m">Medium</span><span>Compared options side by side, then locked the design</span><span class="st closed">Closed</span></div>
         <div class="r-row" role="row"><span><b>Academic integrity</b>Unclear role of AI in the work</span><span class="lv m">Medium</span><span class="lv h">High</span><span>Published a full AI disclosure</span><span class="st closed">Closed</span></div>
-        <div class="r-row" role="row"><span><b>Inaccurate content</b>Details inconsistent across CV and site</span><span class="lv m">Medium</span><span class="lv m">Medium</span><span>Cross-checked every fact against my CV and references</span><span class="st open">Ongoing</span></div>
+      </div>
+    </div>
+
+
+    <!-- ISSUES -->
+    <div class="cs-panel" id="cs-issues" role="tabpanel">
+      <p class="cs-intro">Risks are what <em>might</em> happen; issues are what <em>did</em>. These came up after launch and were logged, fixed and verified on the live site.</p>
+      <div class="risk-table issue-table" role="table">
+        <div class="r-row r-headrow" role="row"><span>Issue</span><span>Impact</span><span>Resolution</span><span>Status</span></div>
+        <div class="r-row" role="row"><span><b>Browser compatibility</b>Rotating badge and anchor not displaying in Safari</span><span class="lv m">Medium</span><span>Rebuilt the badge so it renders consistently in every browser</span><span class="st closed">Resolved</span></div>
+        <div class="r-row" role="row"><span><b>Web font rendering</b>Circle text cut off once the live font loaded</span><span class="lv l">Low</span><span>Fitted the text precisely to the circle, independent of font</span><span class="st closed">Resolved</span></div>
+        <div class="r-row" role="row"><span><b>Incomplete upload</b>Safari silently skipped photos during upload</span><span class="lv h">High</span><span>Switched to Chrome and re-uploaded all files; verified each image live</span><span class="st closed">Resolved</span></div>
+        <div class="r-row" role="row"><span><b>Version control</b>Duplicate CV files (spaces and "-2" names) broke the Download CV link</span><span class="lv h">High</span><span>Identified the live file, corrected naming and links; Download CV verified working</span><span class="st closed">Resolved</span></div>
+        <div class="r-row" role="row"><span><b>Link preview cache</b>WhatsApp showed an outdated link preview</span><span class="lv l">Low</span><span>Added preview settings and shared a versioned link to force a refresh</span><span class="st closed">Resolved</span></div>
       </div>
     </div>
 
@@ -1411,6 +1447,10 @@
         <li>Recorded and edited a voice-note introduction, then made the button smaller so the page stays uncluttered</li>
         <li>Rebuilt the moodboard around my life and who I am, using my own photos</li>
         <li>Added this case study, linked from Projects, to show how the website was managed</li>
+        <li>Added an "Open to" availability line so employers know exactly what I am looking for</li>
+        <li>Updated my CV to match the website's project management and consulting message</li>
+        <li>Enlarged the "Leading through change" tagline to strengthen the opening message</li>
+        <li>Tracked planned vs actual dates and logged post-launch issues in this case study</li>
       </ul>
     </div>
 
@@ -1586,11 +1626,18 @@
     [['2026-09-16','Sept'],['2026-10-01','Oct'],['2026-11-01','Nov'],['2026-11-30','Due 30 Nov']].forEach(([d,l]) => { const s = document.createElement('span'); s.textContent = l; s.style.left = pct(D(d)) + '%'; if (l.startsWith('Due')) s.style.transform = 'translateX(-100%)'; head.appendChild(s); });
     const now = new Date(); now.setHours(12);
     gantt.querySelectorAll('.g-row').forEach(r => {
-      const s = D(r.dataset.s), e = new Date(D(r.dataset.e).getTime() + DAY), bar = r.querySelector('.g-bar');
-      bar.style.left = pct(s) + '%'; bar.style.width = (pct(e) - pct(s)) + '%';
-      const done = Math.max(0, Math.min(1, (now - s) / (e - s)));
-      bar.classList.add(done >= 1 ? 'done' : done > 0 ? 'prog' : 'plan');
-      if (done > 0) { const f = document.createElement('span'); f.className = 'fill'; f.style.width = done * 100 + '%'; bar.appendChild(f); }
+      const track = r.querySelector('.g-track'), base = r.querySelector('.g-bar');
+      const s = D(r.dataset.s), e = new Date(D(r.dataset.e).getTime() + DAY);
+      base.classList.add('base');
+      base.style.left = pct(s) + '%'; base.style.width = (pct(e) - pct(s)) + '%';
+      if (r.dataset.as) {
+        const as = D(r.dataset.as), ongoing = r.dataset.ae === 'today';
+        const ae = ongoing ? now : new Date(D(r.dataset.ae).getTime() + DAY);
+        const a = document.createElement('div'); a.className = 'g-bar act ' + (ongoing ? 'ongoing' : 'complete');
+        a.style.left = pct(as) + '%'; a.style.width = Math.max(.8, pct(ae) - pct(as)) + '%';
+        a.title = 'Actual: ' + r.dataset.as + ' to ' + (ongoing ? 'today' : r.dataset.ae);
+        track.appendChild(a);
+      }
     });
     if (now >= start && now <= end) {
       const firstTrack = gantt.querySelector('.g-track'), line = document.createElement('div'); line.className = 'g-today';
