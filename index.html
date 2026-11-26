@@ -431,7 +431,7 @@
   .gallery figcaption span{color:#fff}
   .water .ph::after{background:#0f4c5c}
   .experience .ph::after{background:#fff}
-  @media(max-width:800px){.gallery{grid-template-columns:1fr 1fr}.gallery figure:first-child{grid-column:1/-1}.gallery figure:first-child .ph{min-height:240px}}
+  @media(max-width:800px){.gallery{grid-template-columns:1fr 1fr}.gallery figure{min-width:0}.gallery figure:first-child{grid-column:1/-1}.gallery figure:first-child .ph{height:auto;min-height:0;aspect-ratio:4/3}.gallery figcaption{letter-spacing:.14em}}
 
   /* photo tiles in moodboard */
   .tile.photo{padding:0;align-items:stretch}
